@@ -34,13 +34,22 @@
             <span class="input-group-text input-page-text" id="inputGroup-sizing-default">Rótulo</span>
             <input type="text" class="form-control form-page" placeholder="ex: 029033" name="periodico" id="peri">
           </div>
-          <div class="aviso">Apénas os primeiros 6 números do rótulo. Ex: no rótulo "153931_01" você insere "153931"</div>
+          <div class="aviso">Apenas os primeiros 6 números do rótulo. Ex: no rótulo "153931_01" você insere "153931"</div>
           <div class="input-group mb-3">
             <span class="input-group-text input-page-text" id="inputGroup-sizing-default">Ano</span>
             <input type="text" class="form-control form-page" placeholder="ex: 1964" name="ano" id="ano">
           </div>
           <div class="input-group mb-3">
             <span class="input-group-text input-page-text" id="inputGroup-sizing-default">Edição</span>
+            <div class="input-group-btn">
+              <select class="form-control peri-prefi" id="pref">
+                <option value="">Prefixo</option>
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+                <option value="D">D</option>
+              </select>
+            </div>
             <input type="text" class="form-control form-page" placeholder="ex: 00085" name="edic" id="edic">
           </div>
          <button class="btn btn-pod" name="submit" id="clickme">PDF</button>
@@ -56,7 +65,8 @@ function fire() {
   var locNum0 = document.getElementById("peri").value;
   var locNum1 = document.getElementById("ano").value;
   var locNum2 = document.getElementById("edic").value;
-  window.location = "http://memoria.bn.br/pdf/" + locNum0 + "/per" + locNum0 + "_" + locNum1 + "_" + locNum2 + ".pdf";
+  var locNum3 = document.getElementById("pref").value;
+  window.location = "http://memoria.bn.br/pdf/" + locNum0 + "/per" + locNum0 + "_" + locNum1 + "_"+ locNum3 + locNum2 + ".pdf";
 }
 
 document.getElementById("clickme").onclick = fire;
