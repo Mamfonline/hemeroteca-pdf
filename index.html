@@ -34,31 +34,45 @@
       <p>Insira os dados para encontrar o PDF.</p>
     </div>
           <select id="peri" name="periodico" class="peri-select">
+          <optgroup label="Diários Associados">
             <option value="029033">Diário de Pernambuco</option>
+            <option value="761672">Diário do Paraná</option>
             <option value="093718">Diario de Noticias</option>
             <option value="800074">Diario da Tarde</option>
-            <option value="761672">Diário do Paraná</option>
-            <option value="093092">Diario Carioca</option>
-            <option value="089842">Correio da Manhã</option>
-            <option value="797596">A Tarde</option>
-            <option value="348970">A Noite</option>
-            <option value="030678">A Luta Democratica</option>
-            <option value="092932">O Dia (PR)</option>
-            <option value="720925">O Indio</option>
-            <option value="149322">O Semanário</option>
-            <option value="761583">O Semeador</option>
-            <option value="119601">O Mundo Ilustrado</option>
-            <option value="098086">O Estado de Mato Grosso</option>
-            <option value="108081">Imprensa Popular</option>
+          </optgroup>
+          <optgroup label="Trabalhista">
             <option value="386030">Ultima Hora (RJ)</option>
             <option value="765147">Ultima Hora (PE)</option>
             <option value="830348">Ultima Hora (PR)</option>
+          </optgroup>
+          <optgroup label="PCB">
             <option value="154512">Voz Operária</option>
             <option value="814261">Terra Livre (SP)</option>
+            <option value="108081">Imprensa Popular</option>
+          </optgroup>
+          <optgroup label="UDN">
+            <option value="030678">A Luta Democratica</option>
             <option value="154083">Tribuna da Imprensa</option>
+            <option value="093092">Diario Carioca</option>
+          </optgroup>
+          <optgroup label="Alagoas">
+            <option value="761583">O Semeador</option>
+            <option value="720925">O Indio</option>
+          </optgroup>
+          <optgroup label="Revistas">
+            <option value="119601">O Mundo Ilustrado</option>
             <option value="025909">Revista da Semana</option>
-            <option value="098230">Jornal do Dia</option>
+          </optgroup>
+          <optgroup label="Grande Imprensa">
+            <option value="089842">Correio da Manhã</option>
             <option value="030015">Jornal do Brasil</option>
+            <option value="098230">Jornal do Dia</option>
+          </optgroup>
+            <option value="797596">A Tarde</option>
+            <option value="348970">A Noite</option>
+            <option value="092932">O Dia (PR)</option>
+            <option value="149322">O Semanário</option>
+            <option value="098086">O Estado de Mato Grosso</option>
             <option value="830461">Lavoura e Commercio</option>    
           </select>
           <div class="input-group mb-3">
@@ -67,8 +81,18 @@
           </div>
           <div class="input-group mb-3">
             <span class="input-group-text input-page-text" id="inputGroup-sizing-default">Edição</span>
+            <div class="input-group-btn">
+              <select class="form-control peri-prefi" id="pref">
+                <option value="">Prefixo</option>
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+                <option value="D">D</option>
+              </select>
+            </div>
             <input type="text" class="form-control form-page" placeholder="ex: 00085" name="edic" id="edic">
           </div>
+          <div class="aviso">Algumas edições apresentam um prefixo antes do número, por exemplo “A21783”</div>
          <button class="btn btn-pod" name="submit" id="clickme">PDF</button>
     </div>
   </div>
@@ -82,7 +106,8 @@ function fire() {
   var locNum0 = document.getElementById("peri").value;
   var locNum1 = document.getElementById("ano").value;
   var locNum2 = document.getElementById("edic").value;
-  window.location = "http://memoria.bn.br/pdf/" + locNum0 + "/per" + locNum0 + "_" + locNum1 + "_" + locNum2 + ".pdf";
+  var locNum3 = document.getElementById("pref").value;
+  window.location = "http://memoria.bn.br/pdf/" + locNum0 + "/per" + locNum0 + "_" + locNum1 + "_"+ locNum3 + locNum2 + ".pdf";
 }
 
 document.getElementById("clickme").onclick = fire;
